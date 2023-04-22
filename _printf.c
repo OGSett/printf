@@ -28,6 +28,5 @@ int _printf(const char *format, ...)
 		i++;
 	}
 	va_end(args);
-	_putchar(-1);
 	return (r_val);
 }
