@@ -1,0 +1,6 @@
+#!/bin/bash
+git add .
+git commit -m 'task added'
+git push
+echo '===============================>99.9%'
+echo 'pushed and ready to check!'
