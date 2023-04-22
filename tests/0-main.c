@@ -9,6 +9,7 @@ int main(void)
 	char c = 'a';
 	char *str = "Hello world !!";
 	int r_val;
+	char *s = NULL;
 
 	printf("------------- printf output ----------------\n");
 	r_val = printf("%s %c 100%%\n", str, c);
@@ -16,6 +17,12 @@ int main(void)
 
 	printf("------------- _printf output ----------------\n");
         r_val = _printf("%s%c100%%\n", "abcd", 'e');
+        printf("r_val = %d\n", r_val);
+
+	r_val = printf("%");
+	printf("r_val = %d\n", r_val);
+
+	r_val = _printf("%");
         printf("r_val = %d\n", r_val);
 	return (0);
 }
