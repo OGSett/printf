@@ -1,6 +1,23 @@
 #include "main.h"
 
 /**
+ * count_digit - counts nbr of digits
+ * @n: the giving number
+ * Return: nbr of digits
+ */
+int count_digit(unsigned int n)
+{
+	int count = 0;
+
+	do {
+		count++;
+		n /= 10;
+	} while (n != 0);
+	return (count);
+}
+
+
+/**
  * putnbr - function that print numbers
  * @nbr: number to be printed
  * Return: digit printed
@@ -8,7 +25,7 @@
 
 int putnbr(unsigned int nbr)
 {
-	static int z;
+	/*static int z;*/
 
 	if (nbr >= 10)
 	{
@@ -18,9 +35,9 @@ int putnbr(unsigned int nbr)
 	else
 	{
 		_putchar(nbr + '0');
-		z++;
+		/*z++;*/
 	}
-	return (z);
+	return (0);
 }
 
 /**
@@ -44,7 +61,7 @@ int print_n(va_list list)
 	}
 	else
 		num = n;
-
-	i += putnbr(num);
+	i += count_digit(num);
+	putnbr(num);
 	return (i);
 }
