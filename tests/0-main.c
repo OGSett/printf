@@ -19,10 +19,10 @@ int main(void)
         r_val = _printf("%s%c100%%\n", "abcd", 'e');
         printf("r_val = %d\n", r_val);
 
-	r_val = printf("%");
+	r_val = printf(NULL);
 	printf("r_val = %d\n", r_val);
 
-	r_val = _printf("%");
+	r_val = _printf(NULL);
         printf("r_val = %d\n", r_val);
 	return (0);
 }
