@@ -33,15 +33,15 @@ int print_c(va_list list)
 
 int putstr(char *str)
 {
-	int i;
+	int i, r_val = 0;
 
 	i = 0;
 	while (str[i])
 	{
-		_putchar(str[i]);
+		r_val += _putchar(str[i]);
 		i++;
 	}
-	return (i);
+	return (r_val);
 }
 
 /**
