@@ -6,10 +6,10 @@
  */
 int main(void)
 {
-	char c = 'a';
-	char *str = "Hello world !!";
+	/*char c = 'a';
+	char *str = "Hello world !!";*/
 	int r_val;
-	char *s = NULL;
+	/*char *s = NULL;*/
 	int a = -2147483648;
 
 	printf("-------------_printf output ----------------\n");
