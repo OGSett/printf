@@ -22,11 +22,11 @@ int main(void)
 
 	printf("------------------- _printf output-----------------\n");
 	r_val = _printf("Unsigned:[%u]\n", ui);
-        printf("r_val : %d\n", r_val);
-        r_val = _printf("Unsigned octal:[%o]\n", ui);
-        printf("r_val : %d\n", r_val);
-        r_val = _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-        printf("r_val : %d\n", r_val);
+	printf("r_val : %d\n", r_val);
+	r_val = _printf("Unsigned octal:[%o]\n", ui);
+	printf("r_val : %d\n", r_val);
+	r_val = _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+	printf("r_val : %d\n", r_val);
 
 	return (0);
 }
