@@ -8,7 +8,7 @@
 
 int putnbr(unsigned int nbr)
 {
-	static int i;
+	static int z;
 
 	if (nbr >= 10)
 	{
@@ -18,9 +18,9 @@ int putnbr(unsigned int nbr)
 	else
 	{
 		_putchar(nbr + '0');
-		i++;
+		z++;
 	}
-	return (i);
+	return (z);
 }
 
 /**
