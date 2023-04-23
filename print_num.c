@@ -6,16 +6,10 @@
  * Return: digit printed
  */
 
-int putnbr(int nbr)
+int putnbr(unsigned int nbr)
 {
 	static int i;
 
-	if (nbr < 0)
-	{
-		_putchar('-');
-		nbr = -nbr;
-		i++;
-	}
 	if (nbr >= 10)
 	{
 		putnbr(nbr / 10);
@@ -39,8 +33,18 @@ int print_n(va_list list)
 {
 	int n;
 	int i;
+	unsigned int num;
 
 	n = va_arg(list, int);
-	i = putnbr(n);
+	if (n < 0)
+	{
+		_putchar('-');
+		i++;
+		num = -n;
+	}
+	else
+		num = n;
+
+	i += putnbr(num);
 	return (i);
 }
