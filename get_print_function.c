@@ -10,10 +10,12 @@ int (*get_print_func(char sp))(va_list args)
 	sp_t sps[] = {
 		{'c', print_c},
 		{'s', print_s},
-		{'%', print_percent}
+		{'%', print_percent},
+		{'i', print_n},
+		{'d', print_n}
 	};
 
-	int specifiers = 3, i = 0;
+	int specifiers = 5, i = 0;
 
 	while (i < specifiers)
 	{
