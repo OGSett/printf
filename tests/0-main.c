@@ -10,7 +10,7 @@ int main(void)
 	char *str = "Hello world !!";
 	int r_val;
 	char *s = NULL;
-	int a = 2147483648;
+	int a = -2147483648;
 
 	printf("-------------_printf output ----------------\n");
 	r_val = printf("%i%%\n", a);
