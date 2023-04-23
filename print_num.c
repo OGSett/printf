@@ -10,16 +10,12 @@ int putnbr(unsigned int nbr)
 {
 	static int i;
 
-	if (nbr >= 10)
+	if (nbr / 10 != 0)
 	{
 		putnbr(nbr / 10);
-		putnbr(nbr % 10);
 	}
-	else
-	{
-		_putchar(nbr + '0');
-		i++;
-	}
+	_putchar(nbr % 10 + '0');
+	i++;
 	return (i);
 }
 
