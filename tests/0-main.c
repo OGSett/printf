@@ -10,14 +10,15 @@ int main(void)
 	char *str = "Hello world !!";
 	int r_val;
 	char *s = NULL;
+	int a = 2147483648;
 
 	printf("-------------_printf output ----------------\n");
-	r_val = printf("%s %c %i%%\n", str, c, 100);
+	r_val = printf("%i%%\n", a);
 	
 	printf("r_val = %d\n", r_val);
 
 	printf("------------- _printf output ----------------\n");
-        r_val = _printf("%s %c %i%%\n", str, c , 100);
+        r_val = _printf("%i%%\n", a);
         printf("r_val = %d\n", r_val);
 
 	/*r_val = printf(NULL);
