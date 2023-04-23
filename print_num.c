@@ -32,7 +32,7 @@ int putnbr(unsigned int nbr)
 int print_n(va_list list)
 {
 	int n;
-	int i;
+	int i = 0;
 	unsigned int num;
 
 	n = va_arg(list, int);
