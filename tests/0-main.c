@@ -12,12 +12,12 @@ int main(void)
 	char *s = NULL;
 
 	printf("-------------_printf output ----------------\n");
-	r_val = printf("%s %c %d%%\n", str, c, 100);
+	r_val = printf("%s %c %i%%\n", str, c, 100);
 	
 	printf("r_val = %d\n", r_val);
 
 	printf("------------- _printf output ----------------\n");
-        r_val = _printf("%s %c %d%%\n", str, c , 100);
+        r_val = _printf("%s %c %i%%\n", str, c , 100);
         printf("r_val = %d\n", r_val);
 
 	/*r_val = printf(NULL);

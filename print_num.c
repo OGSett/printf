@@ -8,12 +8,13 @@
 
 int putnbr(int nbr)
 {
-	int i = 0;
+	static int i;
 
 	if (nbr < 0)
 	{
 		_putchar('-');
 		nbr = -nbr;
+		i++;
 	}
 	if (nbr >= 10)
 	{
