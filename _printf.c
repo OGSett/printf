@@ -10,6 +10,8 @@ int _printf(const char *format, ...)
 	int (*p_func)(va_list);
 	int i = 0, r_val = 0;
 
+	if (format == NULL)
+		return (-1);
 	va_start(args, format);
 	while (*(format + i))
 	{
