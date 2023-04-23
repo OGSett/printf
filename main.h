@@ -24,6 +24,7 @@ int print_c(va_list list);
 int putstr(char *str);
 int print_s(va_list list);
 int print_percent(va_list list);
-int putnbr(unsigned int nbr);
+void putnbr(unsigned int nbr);
 int print_n(va_list list);
+int count_digit(unsigned int n);
 #endif

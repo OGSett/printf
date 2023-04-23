@@ -23,10 +23,8 @@ int count_digit(unsigned int n)
  * Return: digit printed
  */
 
-int putnbr(unsigned int nbr)
+void putnbr(unsigned int nbr)
 {
-	/*static int z;*/
-
 	if (nbr >= 10)
 	{
 		putnbr(nbr / 10);
@@ -35,9 +33,7 @@ int putnbr(unsigned int nbr)
 	else
 	{
 		_putchar(nbr + '0');
-		/*z++;*/
 	}
-	return (0);
 }
 
 /**
