@@ -18,10 +18,11 @@ int (*get_print_func(char sp))(va_list args)
 		{'o', print_octal},
 		{'x', print_hex_lower},
 		{'X', print_hex_upper},
-		{'S', ex_print_all}
+		{'S', ex_print_all},
+		{'p', print_address}
 	};
 
-	int specifiers = 11, i = 0;
+	int specifiers = 12, i = 0;
 
 	while (i < specifiers)
 	{

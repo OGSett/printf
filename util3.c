@@ -50,3 +50,24 @@ int print_all(char *str)
 	}
 	return (count);
 }
+
+
+/**
+ * print_address - handle and prints address
+ * @list: list of arguments
+ * Return: nbr of printed characters
+ */
+int print_address(va_list list)
+{
+	unsigned long int ptr;
+	int count = 0;
+	char *res;
+
+	ptr = va_arg(list, unsigned long int);
+	if (!ptr)
+		return (_puts("(nil)"));
+	res = convert(ptr, 16, 0);
+	count += putstr("0x");
+	count += putstr(res);
+	return (count);
+}
