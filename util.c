@@ -13,9 +13,9 @@ int	_putchar(char c)
 	static char BUFFER[SIZE_BUFFER];
 	static int i;
 
-	if (c == -1 || i >= SIZE_BUFFER)
+	if ((c == -1 && i > 0) || i == SIZE_BUFFER)
 	{
-		write(1, BUFFER, i);
+		write(1, &BUFFER[0], i);
 		i = 0;
 	}
 	else if (c != -1)
@@ -48,7 +48,8 @@ int print_c(va_list list)
 
 int putstr(char *str)
 {
-	int i, r_val = 0;
+	int i;
+	int r_val = 0;
 
 	i = 0;
 	while (str[i])
