@@ -31,15 +31,14 @@ int main(void)
         r_val = _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
         printf("r_val : %d\n", r_val);
 	r_val = _printf("binary of %d is : %b \n", 'a', 'a');
-
 	while (i < 1100)
 	{
 		buffer[i] = a;
 		i++;
 	}
 	buffer[i] = '\0';
-
-	_printf("%s \n", buffer);
+	r_val = _printf("%s \n", buffer);
+	printf("r_val : %d\n", r_val);
 
 	return (0);
 }

@@ -2,13 +2,28 @@
 
 /**
  * _putchar - function that write char.
- * @c: char to be printed.
+ * @c: char to be printed
+ * Description: Use a local buffer of 1024 chars in order
+ * to call write as little as possible.
  * Return: 1 if printed, -1 otherwise.
  */
 
 int	_putchar(char c)
 {
-	return (write(1, &c, 1));
+	static char BUFFER[SIZE_BUFFER];
+	static int i;
+
+	if (c == -1 || i >= SIZE_BUFFER)
+	{
+		write(1, BUFFER, i);
+		i = 0;
+	}
+	else if (c != -1)
+	{
+		BUFFER[i] = c;
+		i++;
+	}
+	return (1);
 }
 
 /**

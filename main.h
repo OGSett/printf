@@ -5,6 +5,11 @@
 #include <stdarg.h>
 #include <unistd.h>
 
+#ifndef SIZE_BUFFER
+#define SIZE_BUFFER 1024
+
+#endif /* SIZE_BUFFER */
+
 /**
  * struct specifier - struct specifier
  * @sp: The specifier
