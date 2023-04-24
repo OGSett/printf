@@ -3,7 +3,7 @@
  * convert - converts an integer to a specific base
  * @n: the giving integer
  * @base: the base to be converted to
- * @upper_o_n: 1 if upper 0 if lower
+ * @upper_o_n: indicates if output upper od lower case
  * Return: the conversion string
  */
 char *convert(unsigned int n, int base, int upper_o_n)
