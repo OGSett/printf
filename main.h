@@ -34,7 +34,7 @@ int print_uint(va_list list);
 int print_b(va_list list);
 int print_hex_lower(va_list list);
 int print_hex_upper(va_list list);
-char *convert(unsigned int n, int base, int upper_o_n);
+char *convert(unsigned long int n, int base, int upper_o_n);
 int ex_print_all(va_list list);
 int print_all(char *str);
 int print_address(va_list list);
