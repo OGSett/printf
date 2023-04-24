@@ -11,11 +11,11 @@
 int	_putchar(char c)
 {
 	static char BUFFER[SIZE_BUFFER];
-	static int k = 0;
+	static int k;
 
 	if (c == -1 || k == SIZE_BUFFER)
 	{
-		write(1, &BUFFER[0], k);
+		write(1, &BUFFER, k);
 		k = 0;
 	}
 	if (c != -1)

@@ -13,7 +13,7 @@ int print_b(va_list list, fl_t *flags)
 	char *res;
 	unsigned int input;
 	int count;
-	
+
 	/* we will not use flags on custom specifier */
 	(void)flags;
 

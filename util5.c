@@ -13,14 +13,18 @@ int get_flags(char c, fl_t *f)
 
 	switch (c)
 	{
-		case '+': f->plus = 1;
-			  exist_flag = 1;
-			  break;
-		case ' ': f->space = 1;
-			  exist_flag = 1;
-			  break;
-		case '#': f->hash = 1;
-			  exist_flag = 1;
+		case '+':
+			f->plus = 1;
+			exist_flag = 1;
+			break;
+		case ' ':
+			f->space = 1;
+			exist_flag = 1;
+			break;
+		case '#':
+			f->hash = 1;
+			exist_flag = 1;
+			break;
 	}
 	return (exist_flag);
 }
