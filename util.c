@@ -1,17 +1,5 @@
 #include "main.h"
 
-/*
- * @BUFFER[SIZE_BUFFER]: the buffer where the printed char are stored
- */
-
-static char BUFFER[SIZE_BUFFER];
-
-/*
- * @k: counter of char printed.
- */
-
-static int k = 0;
-
 /**
  * _putchar - function that write char.
  * @c: char to be printed
@@ -22,6 +10,8 @@ static int k = 0;
 
 int	_putchar(char c)
 {
+	static char BUFFER[SIZE_BUFFER];
+	static int k = 0;
 
 	if ((c == -1 && k > 0) || k == SIZE_BUFFER)
 	{
