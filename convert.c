@@ -6,7 +6,7 @@
  * @upper_o_n: indicates if output upper od lower case
  * Return: the conversion string
  */
-char *convert(unsigned int n, int base, int upper_o_n)
+char *convert(unsigned long int n, int base, int upper_o_n)
 {
 	static char *base_digits;
 	static char buffer[50];
