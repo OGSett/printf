@@ -28,6 +28,8 @@ int print_rev(va_list list)
 	int len;
 
 	input = va_arg(list, char *);
+	if (input == NULL)
+		return (putstr("(null)"));
 	len = _len(input);
 	while (len-- >= 0)
 	{
