@@ -28,3 +28,48 @@ int get_flags(char c, fl_t *f)
 	}
 	return (exist_flag);
 }
+
+/**
+ * get_print_flags - returns the string of flags to be printed
+ * @flags: pointer to flags
+ * Return: flags str
+ */
+int get_print_flags(fl_t *flags)
+{
+	int count = 0;
+
+	if (flags->hash == 1)
+		count += _putchar('#');
+	if (flags->plus == 1)
+		count += _putchar('+');
+	else if (flags->space == 1)
+		count += _putchar(' ');
+	return (count);
+}
+
+/**
+ * print_unkown_specifier - prints unkown specifier
+ * @flags: pointer to flags
+ * @c: unkown specifier
+ * Return: nbr of printed characters
+ */
+int print_unkown_specifier(fl_t *flags, char c)
+{
+	int count = 0;
+
+	count += _putchar('%');
+	count += get_print_flags(flags);
+	count += _putchar(c);
+	return (count);
+}
+
+/**
+ * init_flags - initialize flags
+ * @flags: pointer to flags
+ */
+void init_flags(fl_t *flags)
+{
+	flags->hash = 0;
+	flags->space = 0;
+	flags->plus = 0;
+}

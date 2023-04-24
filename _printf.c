@@ -9,7 +9,7 @@ int _printf(const char *format, ...)
 	va_list args;
 	int (*p_func)(va_list, fl_t *);
 	int i = 0, r_val = 0;
-	fl_t flags = {0, 0, 0};
+	fl_t flags;
 
 	if (format == NULL)
 		return (-1);
@@ -20,6 +20,7 @@ int _printf(const char *format, ...)
 			return (-1);
 		else if (*(format + i) == '%')
 		{
+			init_flags(&flags);
 			i++;
 			while (get_flags(*(format + i), &flags) == 1)
 				i++;
@@ -27,7 +28,10 @@ int _printf(const char *format, ...)
 			if (p_func != NULL)
 				r_val += p_func(args, &flags);
 			else
-				r_val += _printf("%%%c", *(format + i));
+			{
+				r_val += print_unkown_specifier(&flags, *(format + i));
+				/*r_val += _printf("%%%c",*(format + i));*/
+			}
 		}
 		else
 		{

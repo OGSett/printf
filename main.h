@@ -57,5 +57,8 @@ int print_rev(va_list list, fl_t *flags);
 int _len(char *str);
 int print_13(va_list list, fl_t *flags);
 int get_flags(char c, fl_t *f);
+int get_print_flags(fl_t *flags);
+int print_unkown_specifier(fl_t *flags, char c);
+void init_flags(fl_t *flags);
 
 #endif
