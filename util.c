@@ -18,7 +18,7 @@ int	_putchar(char c)
 		write(1, &BUFFER, k);
 		k = 0;
 	}
-	/*if (c != -1)
+	if (c != -1)
 	{
 		if (k < SIZE_BUFFER)
 		{
@@ -32,11 +32,6 @@ int	_putchar(char c)
 			BUFFER[k] = c;
 			k++;
 		}
-	}*/
-	else if (k < SIZE_BUFFER)
-	{
-		BUFFER[k] = c;
-		k++;
 	}
 	return (1);
 }
