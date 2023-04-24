@@ -65,7 +65,7 @@ int print_address(va_list list)
 
 	ptr = va_arg(list, unsigned long int);
 	if (!ptr)
-		return (_puts("(nil)"));
+		return (putstr("(nil)"));
 	res = convert(ptr, 16, 0);
 	count += putstr("0x");
 	count += putstr(res);
