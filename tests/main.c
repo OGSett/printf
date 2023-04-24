@@ -2,6 +2,6 @@
 
 int main(void)
 {
-	_printf("our printf is %r \n", "abcd");
+	_printf("our printf is %r \n", NULL);
 	return 0;
 }
