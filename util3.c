@@ -15,7 +15,7 @@ int ex_print_all(va_list list)
 	res = va_arg(list, char *);
 	if (res == NULL)
 		return (putstr("(null)"));
-	count = putall(res);
+	count = print_all(res);
 	return (count);
 }
 
