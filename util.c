@@ -13,15 +13,25 @@ int	_putchar(char c)
 	static char BUFFER[SIZE_BUFFER];
 	static int k = 0;
 
-	if ((c == -1 && k > 0) || k == SIZE_BUFFER)
+	if (c == -1 || k == SIZE_BUFFER)
 	{
 		write(1, &BUFFER[0], k);
 		k = 0;
 	}
-	else if (c != -1)
+	if (c != -1)
 	{
-		BUFFER[k] = c;
-		k++;
+		if (k < SIZE_BUFFER)
+		{
+			BUFFER[k] = c;
+			k++;
+		}
+		else
+		{
+			write(1, &BUFFER, k);
+			k = 0;
+			BUFFER[k] = c;
+			k++;
+		}
 	}
 	return (1);
 }
