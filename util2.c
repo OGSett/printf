@@ -61,7 +61,7 @@ int print_octal(va_list list, fl_t *flags)
 
 	input = va_arg(list, unsigned int);
 	res = convert(input, 8, 0);
-	if (flags->hash == 1 && res)
+	if (flags->hash == 1 && res[0] != '0' && res[1] != '\0')
 		count = _putchar('0');
 	count += putstr(res);
 	return (count);
