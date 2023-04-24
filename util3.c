@@ -4,13 +4,17 @@
  * ex_print_all - function that handle S
  * a custom conversion specifier.
  * @list: list of args
+ * @flags: pointer to flags.
  * Return: number of char printed.
  */
 
-int ex_print_all(va_list list)
+int ex_print_all(va_list list, fl_t *flags)
 {
 	char *res;
 	int count;
+
+	/* we will not use flags */
+	(void)flags;
 
 	res = va_arg(list, char *);
 	if (res == NULL)
@@ -55,13 +59,17 @@ int print_all(char *str)
 /**
  * print_address - handle and prints address
  * @list: list of arguments
+ * @flags: pointer to flags
  * Return: nbr of printed characters
  */
-int print_address(va_list list)
+int print_address(va_list list, fl_t *flags)
 {
 	unsigned long int ptr;
 	int count = 0;
 	char *res;
+
+	/* we will not use flags */
+	(void)flags;
 
 	ptr = va_arg(list, unsigned long int);
 	if (!ptr)

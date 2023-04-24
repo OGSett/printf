@@ -39,10 +39,11 @@ void putnbr(unsigned int nbr)
 /**
  * print_n - the function tha call putnbr.
  * @list: list of args
+ * @flags: pointer to flags.
  * Return: number of digit printed
  */
 
-int print_n(va_list list)
+int print_n(va_list list, fl_t *flags)
 {
 	int n;
 	int i = 0;
@@ -56,7 +57,19 @@ int print_n(va_list list)
 		num = -n;
 	}
 	else
+	{
+		if (flags->plus == 1)
+		{
+			_putchar('+');
+			i++;
+		}
+		else if (flags->space == 1)
+		{
+			_putchar(' ');
+			i++;
+		}
 		num = n;
+	}
 	i += count_digit(num);
 	putnbr(num);
 	return (i);

@@ -5,10 +5,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-#ifndef SIZE_BUFFER
 #define SIZE_BUFFER 1024
-
-#endif /* SIZE_BUFFER */
 
 /**
  * struct specifier - struct specifier
@@ -21,21 +18,43 @@ typedef struct specifier
 	int (*func)(va_list);
 } sp_t;
 
+
+/**
+ * struct flags - struct of flags characters
+ * @plus: The + flag
+ * @space: The space flag
+ * @hash: The # flag
+ */
+typedef struct flags
+{
+	int plus;
+	int space;
+	int hash;
+} fl_t;
+
 int _printf(const char *format, ...);
 int _putchar(char c);
-int (*get_print_func(char sp))(va_list args);
+int (*get_print_func(char sp))(va_list args, fl_t *flags);
 int     _putchar(char c);
-int print_c(va_list list);
+int print_c(va_list list, fl_t *flags);
 int putstr(char *str);
-int print_s(va_list list);
-int print_percent(va_list list);
+int print_s(va_list list, fl_t *flags);
+int print_percent(va_list list, fl_t *flags);
 void putnbr(unsigned int nbr);
-int print_n(va_list list);
+int print_n(va_list list, fl_t *flags);
 int count_digit(unsigned int n);
-int print_octal(va_list list);
-int print_uint(va_list list);
-int print_b(va_list list);
-int print_hex_lower(va_list list);
-int print_hex_upper(va_list list);
-char *convert(unsigned int n, int base, int upper_o_n);
+int print_octal(va_list list, fl_t *flags);
+int print_uint(va_list list, fl_t *flags);
+int print_b(va_list list, fl_t *flags);
+int print_hex_lower(va_list list, fl_t *flags);
+int print_hex_upper(va_list list, fl_t *flags);
+char *convert(unsigned long int n, int base, int upper_o_n);
+int ex_print_all(va_list list, fl_t *flags);
+int print_all(char *str);
+int print_address(va_list list, fl_t *flags);
+int print_rev(va_list list, fl_t *flags);
+int _len(char *str);
+int print_13(va_list list, fl_t *flags);
+int get_flags(char c, fl_t *f);
+
 #endif

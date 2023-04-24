@@ -2,9 +2,10 @@
 /**
  * get_print_func - gets print function associated to a specifier
  * @sp: The giving specifier
+ * @flags: pointer to flags
  * Return: The associated function
  */
-int (*get_print_func(char sp))(va_list args)
+int (*get_print_func(char sp))(va_list args, fl_t *flags)
 {
 
 	sp_t sps[] = {
