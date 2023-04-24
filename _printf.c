@@ -29,7 +29,9 @@ int _printf(const char *format, ...)
 				r_val += p_func(args, &flags);
 			else
 			{
-				r_val += print_unkown_specifier(&flags, *(format + i));
+				if ((flags.space == 1 || flags.hash == 1 || flags.plus == 0) &&
+						*(format + i) != '\0')
+					r_val += print_unkown_specifier(&flags, *(format + i));
 				/*r_val += _printf("%%%c",*(format + i));*/
 			}
 		}
