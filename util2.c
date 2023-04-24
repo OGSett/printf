@@ -83,7 +83,7 @@ int print_hex_lower(va_list list, fl_t *flags)
 
 	input = va_arg(list, unsigned int);
 	res = convert(input, 16, 0);
-	if (flags->hash == 1)
+	if (flags->hash == 1 && res[0] != '0' && res[1] != '\0')
 		count = putstr("0x");
 	count += putstr(res);
 	return (count);
@@ -104,7 +104,7 @@ int print_hex_upper(va_list list, fl_t *flags)
 
 	input = va_arg(list, unsigned int);
 	res = convert(input, 16, 1);
-	if (flags->hash == 1)
+	if (flags->hash == 1 && res[0] != '0' && res[1] != '\0')
 		count = putstr("0X");
 	count += putstr(res);
 	return (count);
