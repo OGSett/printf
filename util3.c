@@ -36,10 +36,10 @@ int print_all(char *str)
 	count = 0;
 	while (str[i])
 	{
-		if ((str[i] > 0 && str[i] < 32) || str[i] == 127)
+		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
 		{
 			count += putstr("\\x");
-			hex = convert(str[i], 16, 0);
+			hex = convert(str[i], 16, 1);
 			if (hex[1] == '\0')
 				count += _putchar('0');
 			count += putstr(hex);
