@@ -38,3 +38,36 @@ int print_rev(va_list list)
 	}
 	return (count);
 }
+
+/**
+ * print_13 - function that extract the input string from the "va_list"
+ * and print it in a rot13'ed way.
+ * @list: list of args.
+ * Return: the number of char printed.
+ */
+
+int print_13(va_list list)
+{
+	int i;
+	int count = 0;
+	char temp;
+	char *input;
+
+	input = va_arg(list, char *);
+	if (input == NULL)
+		return (0);
+	i = 0;
+	while (input[i] != '\0')
+	{
+		temp = input[i];
+		if ((temp >= 'A' && temp <= 'M')
+				|| (temp >= 'a' && temp <= 'm'))
+			temp += 13;
+		else if ((temp >= 'N' && temp <= 'Z')
+				|| (temp >= 'n' && temp <= 'z'))
+			temp -= 13;
+		count += _putchar(temp);
+		i++;
+	}
+	return (count);
+}

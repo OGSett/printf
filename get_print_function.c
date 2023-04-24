@@ -20,7 +20,8 @@ int (*get_print_func(char sp))(va_list args)
 		{'X', print_hex_upper},
 		{'S', ex_print_all},
 		{'p', print_address},
-		{'r', print_rev}
+		{'r', print_rev},
+		{'R', print_13}
 	};
 
 	int specifiers = 14, i = 0;

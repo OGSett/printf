@@ -40,4 +40,5 @@ int print_all(char *str);
 int print_address(va_list list);
 int print_rev(va_list list);
 int _len(char *str);
+int print_13(va_list list);
 #endif
