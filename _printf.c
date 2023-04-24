@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 		else if (*(format + i) == '%')
 		{
 			i++;
-			if (get_flags(*(format + i), &flags) == 1)
+			while (get_flags(*(format + i), &flags) == 1)
 				i++;
 			p_func = get_print_func(*(format + i));
 			if (p_func != NULL)
