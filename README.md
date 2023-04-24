@@ -36,6 +36,5 @@ The character % is followed by zero or more of the following flags:
 | # | The  value should be converted to an "alternate form":<br/>- For o conversions, the first character of the output string is made zero (by prefixing a 0 if it was not zero already).<br/>- For x and X conversions, a nonzero result has the string "0x" (or "0X" for X conversions) prepended to it. |
 
 
-
 # Copyright
 Authors: Yussef EL MEKKAOUI & HAJAR EL ABDELLAOUI

@@ -7,7 +7,6 @@
  * @flags: pointer to flags.
  * Return: number of char printed.
  */
-
 int print_b(va_list list, fl_t *flags)
 {
 	char *res;

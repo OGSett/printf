@@ -55,7 +55,6 @@ int print_all(char *str)
 	return (count);
 }
 
-
 /**
  * print_address - handle and prints address
  * @list: list of arguments

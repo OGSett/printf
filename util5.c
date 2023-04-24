@@ -28,7 +28,6 @@ int get_flags(char c, fl_t *f)
 	}
 	return (exist_flag);
 }
-
 /**
  * get_print_flags - returns the string of flags to be printed
  * @flags: pointer to flags
@@ -46,7 +45,6 @@ int get_print_flags(fl_t *flags)
 		count += _putchar(' ');
 	return (count);
 }
-
 /**
  * print_unkown_specifier - prints unkown specifier
  * @flags: pointer to flags

@@ -21,7 +21,6 @@ int _len(char *str)
  * @flags: pointer to flags.
  * Return: number of char printed
  */
-
 int print_rev(va_list list, fl_t *flags)
 {
 	char *input;

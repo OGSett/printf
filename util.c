@@ -53,7 +53,6 @@ int print_c(va_list list, fl_t *flags)
 	c = va_arg(list, int);
 	return (_putchar(c));
 }
-
 /**
  * putstr - a function that print a string.
  * @str: string to be printed.
