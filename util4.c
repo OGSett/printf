@@ -29,11 +29,12 @@ int print_rev(va_list list)
 
 	input = va_arg(list, char *);
 	if (input == NULL)
-		input = "(null)";
-	len = _len(input);
-	while (len-- >= 0)
+		return (0);
+	len = _len(input) - 1;
+	while (len >= 0)
 	{
 		count += _putchar(input[len]);
+		len--;
 	}
 	return (count);
 }
