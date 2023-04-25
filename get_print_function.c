@@ -5,7 +5,7 @@
  * @sp: The giving specifier
  * Return: The associated function
  */
-int (*get_print_func(char sp))(va_list args, fl_t *flags)
+int (*get_print_func(char sp))(va_list args, fl_t *flags, int size)
 {
 
 	sp_t sps[] = {

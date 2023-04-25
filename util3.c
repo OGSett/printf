@@ -5,16 +5,18 @@
  * a custom conversion specifier.
  * @list: list of args
  * @flags: pointer to flags.
+ * @size: the size of type.
  * Return: number of char printed.
  */
 
-int ex_print_all(va_list list, fl_t *flags)
+int ex_print_all(va_list list, fl_t *flags, int size)
 {
 	char *res;
 	int count;
 
 	/* we will not use flags */
 	(void)flags;
+	(void)size;
 
 	res = va_arg(list, char *);
 	if (res == NULL)
@@ -59,9 +61,10 @@ int print_all(char *str)
  * print_address - handle and prints address
  * @list: list of arguments
  * @flags: pointer to flags
+ * @size: the size of type.
  * Return: nbr of printed characters
  */
-int print_address(va_list list, fl_t *flags)
+int print_address(va_list list, fl_t *flags, int size)
 {
 	unsigned long int ptr;
 	int count = 0;
@@ -69,6 +72,7 @@ int print_address(va_list list, fl_t *flags)
 
 	/* we will not use flags */
 	(void)flags;
+	(void)size;
 
 	ptr = va_arg(list, unsigned long int);
 	if (!ptr)

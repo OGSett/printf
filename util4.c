@@ -19,9 +19,10 @@ int _len(char *str)
  * print_rev - function that print and reverse a string
  * @list: list of args
  * @flags: pointer to flags.
+ * @size: the size of type.
  * Return: number of char printed
  */
-int print_rev(va_list list, fl_t *flags)
+int print_rev(va_list list, fl_t *flags, int size)
 {
 	char *input;
 	int count = 0;
@@ -29,6 +30,7 @@ int print_rev(va_list list, fl_t *flags)
 
 	/* we will not use flags with custom specifier */
 	(void)flags;
+	(void)size;
 
 	input = va_arg(list, char *);
 	if (input == NULL)
@@ -47,10 +49,11 @@ int print_rev(va_list list, fl_t *flags)
  * and print it in a rot13'ed way.
  * @list: list of args.
  * @flags: pointer to flags.
+ * @size: the size of type
  * Return: the number of char printed.
  */
 
-int print_13(va_list list, fl_t *flags)
+int print_13(va_list list, fl_t *flags, int size)
 {
 	int i;
 	int count = 0;
@@ -59,6 +62,7 @@ int print_13(va_list list, fl_t *flags)
 
 	/* we will not use flags with custom specifier */
 	(void)flags;
+	(void)size;
 
 	input = va_arg(list, char *);
 	if (input == NULL)

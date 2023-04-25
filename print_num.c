@@ -40,16 +40,19 @@ void putnbr(unsigned int nbr)
  * print_n - the function tha call putnbr.
  * @list: list of args
  * @flags: pointer to flags.
+ * @size: the size of type.
  * Return: number of digit printed
  */
 
-int print_n(va_list list, fl_t *flags)
+int print_n(va_list list, fl_t *flags, int size)
 {
-	int n;
+	long int n;
 	int i = 0;
-	unsigned int num;
+	unsigned long int num;
 
-	n = va_arg(list, int);
+	n = va_arg(list, long int);
+	n = convert_number(n, size);
+
 	if (n < 0)
 	{
 		_putchar('-');
