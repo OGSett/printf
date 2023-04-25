@@ -12,12 +12,14 @@
  * @plus: The + flag
  * @space: The space flag
  * @hash: The # flag
+ * @zero: 0 flag
  */
 typedef struct flags
 {
 	int plus;
 	int space;
 	int hash;
+	int zero;
 } fl_t;
 
 
