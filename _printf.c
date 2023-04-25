@@ -24,12 +24,6 @@ int _printf(const char *format, ...)
 			i++;
 			while (get_flags(*(format + i), &flags) == 1)
 				i++;
-			flags.zero_pad = 0;
-			if (*(format + i) == '0')
-			{
-				flags.zero_pad = 1;
-				i++;
-			}
 			p_func = get_print_func(*(format + i));
 			if (p_func != NULL)
 				r_val += p_func(args, &flags);
