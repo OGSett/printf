@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 				r_val += p_func(args, &flags);
 			else
 			{
-				if ((flags.space == 1 || flags.hash == 1 || flags.plus == 1 || flags.zero == 1) &&
+				if ((flags.space == 1 || flags.hash == 1 || flags.plus == 1) &&
 						*(format + i) != '\0')
 					r_val += print_unkown_specifier(&flags, *(format + i));
 					/*r_val += _printf("%%%c",*(format + i));*/
@@ -45,6 +45,6 @@ int _printf(const char *format, ...)
 		i++;
 	}
 	va_end(args);
-	_putchar(-1);
+	_putchar('\0');
 	return (r_val);
 }
