@@ -8,6 +8,22 @@
 #define SIZE_BUFFER 1024
 
 /**
+ * struct flags - struct of flags characters
+ * @plus: The + flag
+ * @space: The space flag
+ * @hash: The # flag
+ * @zero: 0 flag
+ */
+typedef struct flags
+{
+	int plus;
+	int space;
+	int hash;
+	int zero;
+} fl_t;
+
+
+/**
  * struct specifier - struct specifier
  * @sp: The specifier
  * @func: The associated function
@@ -15,22 +31,9 @@
 typedef struct specifier
 {
 	char sp;
-	int (*func)(va_list);
+	int (*func)(va_list, fl_t *);
 } sp_t;
 
-
-/**
- * struct flags - struct of flags characters
- * @plus: The + flag
- * @space: The space flag
- * @hash: The # flag
- */
-typedef struct flags
-{
-	int plus;
-	int space;
-	int hash;
-} fl_t;
 
 int _printf(const char *format, ...);
 int _putchar(char c);
@@ -56,5 +59,7 @@ int print_rev(va_list list, fl_t *flags);
 int _len(char *str);
 int print_13(va_list list, fl_t *flags);
 int get_flags(char c, fl_t *f);
-
+int get_print_flags(fl_t *flags);
+int print_unkown_specifier(fl_t *flags, char c);
+void init_flags(fl_t *flags);
 #endif

@@ -32,7 +32,7 @@ int print_rev(va_list list, fl_t *flags)
 
 	input = va_arg(list, char *);
 	if (input == NULL)
-		return (0);
+		return (putstr("[%r]\n"));
 	len = _len(input) - 1;
 	while (len >= 0)
 	{

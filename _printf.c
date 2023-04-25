@@ -1,9 +1,11 @@
 #include "main.h"
+
 /**
  * _printf - produces output according to a format
  * @format: A string that is composed of zero or more directives
  * Return: The number of characters printed
  */
+
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -14,7 +16,7 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
-	while (*(format + i))
+	while (format[i])
 	{
 		if (format[i] == '%' && format[i + 1] == '\0')
 			return (-1);
@@ -39,6 +41,7 @@ int _printf(const char *format, ...)
 				else if (*(format + i) != '\0')
 					r_val += _printf("%%%c",*(format + i));
 					/*r_val += print_unkown_specifier(&flags, *(format + i));*/
+
 			}
 		}
 		else

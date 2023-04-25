@@ -25,7 +25,7 @@ int (*get_print_func(char sp))(va_list args, fl_t *flags)
 		{'R', print_13}
 	};
 
-	int specifiers = 14, i = 0;
+	int specifiers = 15, i = 0;
 
 	while (i < specifiers)
 	{
