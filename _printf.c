@@ -9,10 +9,9 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int (*p_func)(va_list, fl_t *, int);
-	int i = 0, r_val = 0;
+	int (*p_func)(va_list, fl_t *, int, int);
+	int i = 0, r_val = 0, size, width;
 	fl_t flags;
-	int size;
 
 	if (format == NULL)
 		return (-1);
@@ -26,6 +25,8 @@ int _printf(const char *format, ...)
 			init_flags(&flags), i++;
 			while (get_flags(*(format + i), &flags) == 1)
 				i++;
+			width = get_field_width(format, &i, args);
+			printf("width : %d\n", width);
 			size = get_len_modifier(format, &i);
 			p_func = get_print_func(*(format + i));
 			if (p_func != NULL)

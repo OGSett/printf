@@ -40,11 +40,12 @@ void putnbr(unsigned long int nbr)
  * print_n - the function tha call putnbr.
  * @list: list of args
  * @flags: pointer to flags.
+ * @width: the width of the field.
  * @size: the size of type.
  * Return: number of digit printed
  */
 
-int print_n(va_list list, fl_t *flags, int size)
+int print_n(va_list list, fl_t *flags, int width, int size)
 {
 	long int n;
 	int i = 0;

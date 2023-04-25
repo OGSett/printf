@@ -5,11 +5,12 @@
  * a custom conversion specifier.
  * @list: list of args
  * @flags: pointer to flags.
+ * @width: the width of the field.
  * @size: the size of type.
  * Return: number of char printed.
  */
 
-int ex_print_all(va_list list, fl_t *flags, int size)
+int ex_print_all(va_list list, fl_t *flags, int width, int size)
 {
 	char *res;
 	int count;
@@ -61,10 +62,11 @@ int print_all(char *str)
  * print_address - handle and prints address
  * @list: list of arguments
  * @flags: pointer to flags
+ * @width: the width of the field.
  * @size: the size of type.
  * Return: nbr of printed characters
  */
-int print_address(va_list list, fl_t *flags, int size)
+int print_address(va_list list, fl_t *flags, int width, int size)
 {
 	unsigned long int ptr;
 	int count = 0;

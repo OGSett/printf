@@ -40,20 +40,28 @@ int	_putchar(char c)
  * print_c - function that print one char.
  * @list: list of args.
  * @flags: pointer to flags.
+ * @width: the width of the field.
  * @size: The size of type.
  * Return: 1 if printed, -1 otherwise.
  */
 
-int print_c(va_list list, fl_t *flags, int size)
+int print_c(va_list list, fl_t *flags, int width, int size)
 {
 	char c;
+	int i, count = 0;
 
 	/* we will not use flags & size */
 	(void)flags;
 	(void)size;
 
 	c = va_arg(list, int);
-	return (_putchar(c));
+	if (width > 1)
+	{
+		for (i = 0; i < width - 1; i++)
+			count += _putchar(' ');
+	}
+	count += _putchar(c);
+	return (count);
 }
 /**
  * putstr - a function that print a string.
@@ -79,11 +87,12 @@ int putstr(char *str)
  * print_s - a function that write a string.
  * @list:  list of args.
  * @flags: pointer to flags.
+ * @width: the width of the field.
  * @size: The size of type.
  * Return: number of char printed, -1 otherwise.
  */
 
-int print_s(va_list list, fl_t *flags, int size)
+int print_s(va_list list, fl_t *flags, int width, int size)
 {
 	char *s;
 
@@ -101,15 +110,17 @@ int print_s(va_list list, fl_t *flags, int size)
  * print_percent - function to print '%'.
  * @list: list of arg.
  * @flags: pointer to flags.
+ * @width: the width of the field.
  * @size: the size of type.
  * Return: 1 if printed, -1  otherwise.
  */
 
-int print_percent(va_list list, fl_t *flags, int size)
+int print_percent(va_list list, fl_t *flags, int width, int size)
 {
 	(void)list;
 	/* we will not use flags & size*/
 	(void)flags;
 	(void)size;
+	(void)width;
 	return (_putchar('%'));
 }

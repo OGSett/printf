@@ -5,10 +5,11 @@
  * int to binary.
  * @list: list of args.
  * @flags: pointer to flags.
+ * @width: the width of the field.
  * @size: size of type
  * Return: number of char printed.
  */
-int print_b(va_list list, fl_t *flags, int size)
+int print_b(va_list list, fl_t *flags, int width, int size)
 {
 	char *res;
 	unsigned int input;
@@ -17,6 +18,7 @@ int print_b(va_list list, fl_t *flags, int size)
 	/* we will not use flags on custom specifier */
 	(void)flags;
 	(void)size;
+	(void)width;
 
 	input = va_arg(list, unsigned int);
 	res = convert(input, 2, 0);
@@ -28,11 +30,12 @@ int print_b(va_list list, fl_t *flags, int size)
  * print_uint - function that print unsigned int
  * @list: list of args.
  * @flags: pointer to flags.
+ * @width: the width of the field.
  * @size: the size of type
  * Return: number of char printed.
  */
 
-int print_uint(va_list list, fl_t *flags, int size)
+int print_uint(va_list list, fl_t *flags, int width, int size)
 {
 	unsigned long int input;
 	char *res;
@@ -55,11 +58,12 @@ int print_uint(va_list list, fl_t *flags, int size)
  * from int to octal
  * @list: list of args.
  * @flags: pointer to flags.
+ * @width: the width of the field.
  * @size: the size of type
  * Return: number of char printed.
  */
 
-int print_octal(va_list list, fl_t *flags, int size)
+int print_octal(va_list list, fl_t *flags, int width, int size)
 {
 	unsigned long int input;
 	char *res;
@@ -81,11 +85,12 @@ int print_octal(va_list list, fl_t *flags, int size)
  * from int to hex in lowercase.
  * @list: list of args.
  * @flags: pointer to flags.
+ * @width: the width of the field.
  * @size: the size of type.
  * Return: number of char printed,
  */
 
-int print_hex_lower(va_list list, fl_t *flags, int size)
+int print_hex_lower(va_list list, fl_t *flags, int width, int size)
 {
 	unsigned long int input;
 	char *res;
@@ -107,10 +112,11 @@ int print_hex_lower(va_list list, fl_t *flags, int size)
  * int to hex in uppercase.
  * @list: list of args
  * @flags: pointer to flags.
+ * @width: the width of the field.
  * @size: The size of type.
  * Return: number of chars printed.
  */
-int print_hex_upper(va_list list, fl_t *flags, int size)
+int print_hex_upper(va_list list, fl_t *flags, int width, int size)
 {
 	unsigned long int input;
 	char *res;
