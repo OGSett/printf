@@ -31,15 +31,15 @@ int print_b(va_list list, fl_t *flags)
 
 int print_uint(va_list list, fl_t *flags)
 {
-	unsigned int input;
+	unsigned long int input;
 	char *res;
 	int count;
 
 	/* we will not use flags*/
 	(void)flags;
 
-	input = va_arg(list, unsigned int);
-	res = convert(input, 10, 0);
+	input = va_arg(list, unsigned long int);
+	res = convert((unsigned int)input, 10, 0);
 	count = putstr(res);
 	return (count);
 }
@@ -54,12 +54,12 @@ int print_uint(va_list list, fl_t *flags)
 
 int print_octal(va_list list, fl_t *flags)
 {
-	unsigned int input;
+	unsigned long int input;
 	char *res;
 	int count = 0;
 
-	input = va_arg(list, unsigned int);
-	res = convert(input, 8, 0);
+	input = va_arg(list, unsigned long int);
+	res = convert((unsigned int)input, 8, 0);
 	if (flags->hash == 1 && input != 0)
 		count = _putchar('0');
 	count += putstr(res);
@@ -76,12 +76,12 @@ int print_octal(va_list list, fl_t *flags)
 
 int print_hex_lower(va_list list, fl_t *flags)
 {
-	unsigned int input;
+	unsigned long int input;
 	char *res;
 	int count = 0;
 
-	input = va_arg(list, unsigned int);
-	res = convert(input, 16, 0);
+	input = va_arg(list, unsigned long int);
+	res = convert((unsigned int)input, 16, 0);
 	if (flags->hash == 1 && input != 0)
 		count = putstr("0x");
 	count += putstr(res);
@@ -97,12 +97,12 @@ int print_hex_lower(va_list list, fl_t *flags)
  */
 int print_hex_upper(va_list list, fl_t *flags)
 {
-	unsigned int input;
+	unsigned long int input;
 	char *res;
 	int count = 0;
 
-	input = va_arg(list, unsigned int);
-	res = convert(input, 16, 1);
+	input = va_arg(list, unsigned long int);
+	res = convert((unsigned int)input, 16, 1);
 	if (flags->hash == 1 && input != 0)
 		count = putstr("0X");
 	count += putstr(res);
