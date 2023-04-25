@@ -22,8 +22,7 @@ int _printf(const char *format, ...)
 			return (-1);
 		else if (*(format + i) == '%')
 		{
-			init_flags(&flags);
-			i++;
+			init_flags(&flags), i++;
 			while (get_flags(*(format + i), &flags) == 1)
 				i++;
 			p_func = get_print_func(*(format + i));
@@ -34,21 +33,16 @@ int _printf(const char *format, ...)
 				if ((flags.space == 1 || flags.hash == 1 || flags.plus == 1) &&
 						*(format + i) == '\0')
 				{
-					/*r_val += print_unkown_specifier(&flags, *(format + i));*/
 					_putchar(-1);
 					return (1);
 				}
 				else if (*(format + i) != '\0')
-					r_val += _printf("%%%c",*(format + i));
-					/*r_val += print_unkown_specifier(&flags, *(format + i));*/
+					r_val += _printf("%%%c", *(format + i));
 
 			}
 		}
 		else
-		{
-			_putchar(*(format + i));
-			r_val += 1;
-		}
+			_putchar(*(format + i)), r_val += 1;
 		i++;
 	}
 	va_end(args);
