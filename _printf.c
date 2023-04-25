@@ -29,17 +29,7 @@ int _printf(const char *format, ...)
 			if (p_func != NULL)
 				r_val += p_func(args, &flags);
 			else
-			{
-				if ((flags.space == 1 || flags.hash == 1 || flags.plus == 1) &&
-						*(format + i) == '\0')
-				{
-					_putchar(-1);
-					return (1);
-				}
-				else if (*(format + i) != '\0')
-					r_val += _printf("%%%c", *(format + i));
-
-			}
+				r_val += _printf("%%%c", *(format + i));
 		}
 		else
 			_putchar(*(format + i)), r_val += 1;
