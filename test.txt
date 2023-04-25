@@ -1,0 +1,20 @@
+#include "main.h"
+int main(void)
+{
+	char a = 'A';
+	char *string = "I am a string ready to be printed";
+	int len;
+	int len2;
+
+	len = _printf("%s \n", string);
+	_printf("%c \n", a);
+	_printf("%r \n", "abc");
+	_printf("%b \n", a);
+	_printf("%R \n", "abc");
+	_printf("%d \n", len);
+	_printf("%x \n", a);
+	_printf("%X \n", a);
+	len2 = printf("%s \n", string);
+	printf("%d \n", len2);
+	return (0);
+}
