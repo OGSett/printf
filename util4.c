@@ -18,18 +18,21 @@ int _len(char *str)
 /**
  * print_rev - function that print and reverse a string
  * @list: list of args
+ * @flags: pointer to flags.
  * Return: number of char printed
  */
-
-int print_rev(va_list list)
+int print_rev(va_list list, fl_t *flags)
 {
 	char *input;
 	int count = 0;
 	int len;
 
+	/* we will not use flags with custom specifier */
+	(void)flags;
+
 	input = va_arg(list, char *);
 	if (input == NULL)
-		return (0);
+		return (putstr("[%r]\n"));
 	len = _len(input) - 1;
 	while (len >= 0)
 	{
@@ -43,15 +46,19 @@ int print_rev(va_list list)
  * print_13 - function that extract the input string from the "va_list"
  * and print it in a rot13'ed way.
  * @list: list of args.
+ * @flags: pointer to flags.
  * Return: the number of char printed.
  */
 
-int print_13(va_list list)
+int print_13(va_list list, fl_t *flags)
 {
 	int i;
 	int count = 0;
 	char temp;
 	char *input;
+
+	/* we will not use flags with custom specifier */
+	(void)flags;
 
 	input = va_arg(list, char *);
 	if (input == NULL)

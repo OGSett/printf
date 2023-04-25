@@ -11,11 +11,11 @@
 int	_putchar(char c)
 {
 	static char BUFFER[SIZE_BUFFER];
-	static int k = 0;
+	static int k;
 
 	if (c == -1 || k == SIZE_BUFFER)
 	{
-		write(1, &BUFFER[0], k);
+		write(1, &BUFFER, k);
 		k = 0;
 	}
 	if (c != -1)
@@ -39,17 +39,20 @@ int	_putchar(char c)
 /**
  * print_c - function that print one char.
  * @list: list of args.
+ * @flags: pointer to flags.
  * Return: 1 if printed, -1 otherwise.
  */
 
-int print_c(va_list list)
+int print_c(va_list list, fl_t *flags)
 {
 	char c;
+
+	/* we will not use flags */
+	(void)flags;
 
 	c = va_arg(list, int);
 	return (_putchar(c));
 }
-
 /**
  * putstr - a function that print a string.
  * @str: string to be printed.
@@ -73,12 +76,16 @@ int putstr(char *str)
 /**
  * print_s - a function that write a string.
  * @list:  list of args.
+ * @flags: pointer to flags.
  * Return: number of char printed, -1 otherwise.
  */
 
-int print_s(va_list list)
+int print_s(va_list list, fl_t *flags)
 {
 	char *s;
+
+	/* we will not use flags */
+	(void)flags;
 
 	s = va_arg(list, char *);
 	if (s == NULL)
@@ -89,11 +96,14 @@ int print_s(va_list list)
 /**
  * print_percent - function to print '%'.
  * @list: list of arg.
+ * @flags: pointer to flags.
  * Return: 1 if printed, -1  otherwise.
  */
 
-int print_percent(va_list list)
+int print_percent(va_list list, fl_t *flags)
 {
 	(void)list;
+	/* we will not use flags*/
+	(void)flags;
 	return (_putchar('%'));
 }
