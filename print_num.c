@@ -5,7 +5,7 @@
  * @n: the giving number
  * Return: nbr of digits
  */
-int count_digit(unsigned int n)
+int count_digit(unsigned long int n)
 {
 	int count = 0;
 
@@ -23,7 +23,7 @@ int count_digit(unsigned int n)
  * Return: digit printed
  */
 
-void putnbr(unsigned int nbr)
+void putnbr(unsigned long int nbr)
 {
 	if (nbr >= 10)
 	{
@@ -57,7 +57,7 @@ int print_n(va_list list, fl_t *flags, int size)
 	{
 		_putchar('-');
 		i++;
-		num = -n;
+		num = (unsigned long int)-n;
 	}
 	else
 	{

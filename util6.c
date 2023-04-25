@@ -12,7 +12,7 @@ int get_len_modifier(const char *format, int *p)
 {
 	int index = *p;
 	int size = 0;
-	
+
 	if (format[index] == 'h')
 		size = 1;
 	else if (format[index] == 'l')
