@@ -16,9 +16,9 @@
  */
 typedef struct flags
 {
-        int plus;
-        int space;
-        int hash;
+	int plus;
+	int space;
+	int hash;
 	int zero_pad;
 } fl_t;
 
@@ -62,4 +62,5 @@ int get_flags(char c, fl_t *f);
 int get_print_flags(fl_t *flags);
 int print_unkown_specifier(fl_t *flags, char c);
 void init_flags(fl_t *flags);
+void process_format(const char *format, va_list args, int *i, int *r_val);
 #endif
