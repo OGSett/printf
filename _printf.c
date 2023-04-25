@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
-	while (*(format + i))
+	while (format[i++])
 	{
 		if (format[i] == '%' && format[i + 1] == '\0')
 			return (-1);
@@ -28,13 +28,15 @@ int _printf(const char *format, ...)
 				i++;
 			p_func = get_print_func(*(format + i));
 			if (p_func != NULL)
+			{
 				r_val += p_func(args, &flags);
+				flags.zero = (flags.zero == 1) ? 1 : 0;
+			}
 			else
 			{
 				if ((flags.space == 1 || flags.hash == 1 || flags.plus == 1) &&
 						*(format + i) != '\0')
 					r_val += print_unkown_specifier(&flags, *(format + i));
-					/*r_val += _printf("%%%c",*(format + i));*/
 			}
 		}
 		else
@@ -42,7 +44,6 @@ int _printf(const char *format, ...)
 			_putchar(*(format + i));
 			r_val += 1;
 		}
-		i++;
 	}
 	va_end(args);
 	_putchar(-1);
