@@ -30,9 +30,15 @@ int _printf(const char *format, ...)
 			else
 			{
 				if ((flags.space == 1 || flags.hash == 1 || flags.plus == 1) &&
-						*(format + i) != '\0')
-					r_val += print_unkown_specifier(&flags, *(format + i));
+						*(format + i) == '\0')
+				{
+					/*r_val += print_unkown_specifier(&flags, *(format + i));*/
+					_putchar(-1);
+					return (1);
+				}
+				else if (*(format + i) != '\0')
 					/*r_val += _printf("%%%c",*(format + i));*/
+					r_val += print_unkown_specifier(&flags, *(format + i));
 			}
 		}
 		else
