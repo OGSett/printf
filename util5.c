@@ -25,10 +25,6 @@ int get_flags(char c, fl_t *f)
 			f->hash = 1;
 			exist_flag = 1;
 			break;
-		case '0':
-			f->zero_pad = 1;
-			exist_flag = 1;
-			break;
 	}
 	return (exist_flag);
 }
@@ -47,8 +43,6 @@ int get_print_flags(fl_t *flags)
 		count += _putchar('+');
 	else if (flags->space == 1)
 		count += _putchar(' ');
-	else if (flags->zero_pad == 1)
-		count += _putchar('0');
 	return (count);
 }
 /**
@@ -76,5 +70,4 @@ void init_flags(fl_t *flags)
 	flags->hash = 0;
 	flags->space = 0;
 	flags->plus = 0;
-	flags->zero_pad = 0;
 }
