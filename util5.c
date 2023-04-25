@@ -62,8 +62,6 @@ int print_unkown_specifier(fl_t *flags, char c)
 	int count = 0;
 
 	count += _putchar('%');
-	if (flags.zero_pad == 1)
-		count += _putchar('0');
 	count += get_print_flags(flags);
 	count += _putchar(c);
 	return (count);
