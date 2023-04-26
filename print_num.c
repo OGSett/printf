@@ -47,11 +47,12 @@ void putnbr(unsigned long int nbr)
 int print_n(va_list list, fl_t *flags, int width, int size)
 {
 	long int n;
-	int i = 0;
-	int k, d;
-	int count = 0;
-	int plus = 0, mines = 0, space = 0;
+	int plus = 0, mines = 0, space = 0, count, k, i = 0;
 	unsigned long int num;
+	char padding = ' ', sign;
+
+	if (flags->zero)
+		padding = '0';
 
 	n = va_arg(list, long int);
 	n = convert_number(n, size);
@@ -69,19 +70,36 @@ int print_n(va_list list, fl_t *flags, int width, int size)
 		num = n;
 	}
 	i += count_digit(num);
-	if (width > i && !flags->zero)
+	sign = get_sign(mines, space, plus);
+	if ((mines || space || plus) && flags->zero)
+		_putchar(sign);
+	if (width > i/* && !flags->zero*/)
 	{
-		d = width - i;
-		for (k = 0; k < d; k++)
-			count += _putchar(' ');
+		for (k = 0; k < (width - i); k++)
+			count += _putchar(padding);
 	}
-	if (mines == 1)
-		_putchar('-');
-	if (space == 1)
-		_putchar(' ');
-	if (plus == 1)
-		_putchar('+');
-	putnbr(num);
-	i += count;
+	if ((mines || space || plus) && !flags->zero)
+		_putchar(sign);
+	putnbr(num), i += count;
 	return (i);
+}
+
+/**
+ * get_sign - gets the sign
+ * @mines: minus sign
+ * @space: space flag
+ * @plus: plus flag
+ * Return: return the sign
+ */
+char get_sign(int mines, int space, int plus)
+{
+	char sign;
+
+	if (mines)
+		sign = '-';
+	if (space)
+		sign = ' ';
+	if (plus)
+		sign = '+';
+	return (sign);
 }
