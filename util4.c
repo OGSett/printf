@@ -66,6 +66,7 @@ int print_13(va_list list, fl_t *flags, int width, int size)
 	/* we will not use flags with custom specifier */
 	(void)flags;
 	(void)size;
+	(void)width;
 
 	input = va_arg(list, char *);
 	if (input == NULL)

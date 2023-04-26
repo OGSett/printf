@@ -26,11 +26,10 @@ int _printf(const char *format, ...)
 			while (get_flags(*(format + i), &flags) == 1)
 				i++;
 			width = get_field_width(format, &i, args);
-			printf("width : %d\n", width);
 			size = get_len_modifier(format, &i);
 			p_func = get_print_func(*(format + i));
 			if (p_func != NULL)
-				r_val += p_func(args, &flags, size);
+				r_val += p_func(args, &flags, width, size);
 			else
 				r_val += _printf("%%%c", *(format + i));
 		}

@@ -49,32 +49,40 @@ int print_n(va_list list, fl_t *flags, int width, int size)
 {
 	long int n;
 	int i = 0;
+	int k, d;
+	int count = 0;
+	int plus = 0, mines = 0, space = 0;
 	unsigned long int num;
 
 	n = va_arg(list, long int);
 	n = convert_number(n, size);
-
 	if (n < 0)
 	{
-		_putchar('-');
-		i++;
+		mines = 1, i++;
 		num = (unsigned long int)-n;
 	}
 	else
 	{
 		if (flags->plus == 1)
-		{
-			_putchar('+');
-			i++;
-		}
+			plus = 1, i++;
 		else if (flags->space == 1)
-		{
-			_putchar(' ');
-			i++;
-		}
+			space = 1, i++;
 		num = n;
 	}
 	i += count_digit(num);
+	if (width > i)
+	{
+		d = width - i;
+		for (k = 0; k < d; k++)
+			count += _putchar(' ');
+	}
+	if (mines == 1)
+		_putchar('-');
+	if (space == 1)
+		_putchar(' ');
+	if (plus == 1)
+		_putchar('+');
 	putnbr(num);
+	i += count;
 	return (i);
 }
