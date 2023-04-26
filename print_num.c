@@ -16,7 +16,6 @@ int count_digit(unsigned long int n)
 	return (count);
 }
 
-
 /**
  * putnbr - function that print numbers
  * @nbr: number to be printed
@@ -70,7 +69,7 @@ int print_n(va_list list, fl_t *flags, int width, int size)
 		num = n;
 	}
 	i += count_digit(num);
-	if (width > i)
+	if (width > i && !flags->zero)
 	{
 		d = width - i;
 		for (k = 0; k < d; k++)

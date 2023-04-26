@@ -51,7 +51,7 @@ int print_uint(va_list list, fl_t *flags, int width, int size)
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 10, 0);
 	len = _len(res);
-	if (width > len)
+	if (width > len && !flags->zero)
 	{
 		for (i = 0; i < (width - len); i++)
 			count += _putchar(' ');
@@ -83,14 +83,14 @@ int print_octal(va_list list, fl_t *flags, int width, int size)
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 8, 0);
 	len = _len(res);
-	if (width > len + 1)
+	if (width > len + 1 && !flags->zero)
 	{
 		for (i = 0; i < (width - len - 1); i++)
 			count += _putchar(' ');
 	}
 	if (flags->hash == 1 && input != 0)
 		count += _putchar('0');
-	else if (width > 0)
+	else if (width > 0 && !flags->zero)
 		count += _putchar(' ');
 	count += putstr(res);
 	return (count);
@@ -118,14 +118,14 @@ int print_hex_lower(va_list list, fl_t *flags, int width, int size)
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 16, 0);
 	len = _len(res);
-	if (width > len + 2)
+	if (width > len + 2 && !flags->zero)
 	{
 		for (i = 0; i < (width - len - 2); i++)
 			count += _putchar(' ');
 	}
 	if (flags->hash == 1 && input != 0)
 		count += putstr("0x");
-	else if (width > 0)
+	else if (width > 0 && !flags->zero)
 		count += putstr("  ");
 	count += putstr(res);
 	return (count);
@@ -152,14 +152,14 @@ int print_hex_upper(va_list list, fl_t *flags, int width, int size)
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 16, 1);
 	len = _len(res);
-	if (width > len + 2)
+	if (width > len + 2 && !flags->zero)
 	{
 		for (i = 0; i < (width - len - 2); i++)
 			count = _putchar(' ');
 	}
 	if (flags->hash == 1 && input != 0)
 		count += putstr("0X");
-	else if (width > 0)
+	else if (width > 0 && !flags->zero)
 		count += putstr("  ");
 	count += putstr(res);
 	return (count);
