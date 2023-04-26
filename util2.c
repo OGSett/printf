@@ -56,7 +56,7 @@ int print_uint(va_list list, fl_t *flags, int width, int size)
 		for (i = 0; i < (width - len); i++)
 			count += _putchar(' ');
 	}
-	count = putstr(res);
+	count += putstr(res);
 	return (count);
 }
 
