@@ -44,5 +44,11 @@ Here "integer conversion" stands for d, i, o, u, x, or X conversion:
 | h | A following integer conversion corresponds to a short int or unsigned short int argument |
 | l | A following integer conversion corresponds to a long int or unsigned long int argument |
 
+## Field width
+An optional decimal digit string (with nonzero first digit) specifying a minimum field width.
+If the converted value has fewer characters  than  the  field width,  it  will  be padded with spaces on the left.
+Instead of a decimal digit string one may write "*" to specify that the field width is given in the next argument.
+In no case does a nonexistent or small field width cause truncation of a field; if the result of a conversion is wider than the field width, the field is expanded to contain the conversion result.
+
 # Copyright
 Authors: Yussef EL MEKKAOUI & HAJAR EL ABDELLAOUI
