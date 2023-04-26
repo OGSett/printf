@@ -43,18 +43,20 @@ int print_uint(va_list list, fl_t *flags, int width, int size)
 	int i;
 	int len;
 	unsigned long int converted;
+	char padding = ' ';
 
-	/* we will not use flags*/
-	(void)flags;
+	if (flags->zero)
+		padding = '0';
+
 
 	input = va_arg(list, unsigned long int);
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 10, 0);
 	len = _len(res);
-	if (width > len && !flags->zero)
+	if (width > len /*&& !flags->zero*/)
 	{
 		for (i = 0; i < (width - len); i++)
-			count += _putchar(' ');
+			count += _putchar(padding);
 	}
 	count += putstr(res);
 	return (count);
@@ -78,6 +80,10 @@ int print_octal(va_list list, fl_t *flags, int width, int size)
 	int i;
 	int len;
 	unsigned long int converted;
+	char padding = ' ';
+
+	if (flags->zero)
+		padding = '0';
 
 	input = va_arg(list, unsigned long int);
 	converted = convert_unsigned_number(input, size);
@@ -88,7 +94,7 @@ int print_octal(va_list list, fl_t *flags, int width, int size)
 	if (width > len /*+ 1 && !flags->zero*/)
 	{
 		for (i = 0; i < (width - len /*- 1*/); i++)
-			count += _putchar(' ');
+			count += _putchar(padding);
 	}
 	if (flags->hash == 1 && input != 0)
 		count += _putchar('0');
@@ -113,6 +119,10 @@ int print_hex_lower(va_list list, fl_t *flags, int width, int size)
 	int count = 0;
 	int len, i;
 	unsigned long int converted;
+	char padding = ' ';
+
+	if (flags->zero)
+		padding = '0';
 
 	input = va_arg(list, unsigned long int);
 	converted = convert_unsigned_number(input, size);
@@ -123,7 +133,7 @@ int print_hex_lower(va_list list, fl_t *flags, int width, int size)
 	if (width > len /*+ 2 && !flags->zero*/)
 	{
 		for (i = 0; i < (width - len /*- 2*/); i++)
-			count += _putchar(' ');
+			count += _putchar(padding);
 	}
 	if (flags->hash == 1 && input != 0)
 		count += putstr("0x");
@@ -147,6 +157,10 @@ int print_hex_upper(va_list list, fl_t *flags, int width, int size)
 	int count = 0;
 	int len, i;
 	unsigned long int converted;
+	char padding = ' ';
+
+	if (flags->zero)
+		padding = '0';
 
 	input = va_arg(list, unsigned long int);
 	converted = convert_unsigned_number(input, size);
@@ -157,7 +171,7 @@ int print_hex_upper(va_list list, fl_t *flags, int width, int size)
 	if (width > len /*+ 2 && !flags->zero*/)
 	{
 		for (i = 0; i < (width - len /*- 2*/); i++)
-			count += _putchar(' ');
+			count += _putchar(padding);
 	}
 	if (flags->hash == 1 && input != 0)
 		count += putstr("0X");
