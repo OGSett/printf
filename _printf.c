@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	int i = 0, r_val = 0, size, width;
 	fl_t flags;
 
-	if (format == NULL)
+	if (!format || (format[0] == '%' && format[1] == ' ' && !format[2]))
 		return (-1);
 	va_start(args, format);
 	while (format[i])
