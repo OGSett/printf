@@ -2,8 +2,6 @@
 
 int main(void)
 {
-	int i = 55;
-	int *p = &i;
 
 	_printf("%8c\n", 'h');
 	_printf("%8s\n", "Hello world!!!");
@@ -14,7 +12,7 @@ int main(void)
 	_printf("%#8o\n", 89);
 	_printf("%#8x\n", 89);
 	_printf("%#8X\n", 89);
-	_printf("%20p\n", p);
+	_printf("%20p\n", NULL);
 	_printf("[%c]\n", '\0');
 	return (0);
 }

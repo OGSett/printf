@@ -79,7 +79,12 @@ int print_address(va_list list, fl_t *flags, int width, int size)
 
 	ptr = va_arg(list, unsigned long int);
 	if (!ptr)
-		return (putstr("(nil)"));
+	{
+		for (i = 0; i < (width - 5); i++)
+			count += _putchar(' ');
+		count += putstr("(nil)");
+		return (count);
+	}
 	res = convert(ptr, 16, 0);
 	len = _len(res) + 2;
 	if (width > len)
