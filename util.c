@@ -95,6 +95,9 @@ int putstr(char *str)
 int print_s(va_list list, fl_t *flags, int width, int size)
 {
 	char *s;
+	int len, i, count;
+
+	count = 0;
 
 	/* we will not use flags & size */
 	(void)flags;
@@ -103,7 +106,14 @@ int print_s(va_list list, fl_t *flags, int width, int size)
 	s = va_arg(list, char *);
 	if (s == NULL)
 		s = "(null)";
-	return (putstr(s));
+	len = _len(s);
+	if (width > len)
+	{
+		for (i = 0; i < (width - len); i++)
+			count += _putchar(' ');
+	}
+	count += putstr(s);
+	return (count);
 }
 
 /**

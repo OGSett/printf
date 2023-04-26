@@ -39,7 +39,9 @@ int print_uint(va_list list, fl_t *flags, int width, int size)
 {
 	unsigned long int input;
 	char *res;
-	int count;
+	int count = 0;
+	int i;
+	int len;
 	unsigned long int converted;
 
 	/* we will not use flags*/
@@ -48,7 +50,12 @@ int print_uint(va_list list, fl_t *flags, int width, int size)
 	input = va_arg(list, unsigned long int);
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 10, 0);
-	/*res = convert((unsigned int)input, 10, 0);*/
+	len = _len(res);
+	if (width > len)
+	{
+		for (i = 0; i < (width - len); i++)
+			count += _putchar(' ');
+	}
 	count = putstr(res);
 	return (count);
 }
@@ -68,14 +75,23 @@ int print_octal(va_list list, fl_t *flags, int width, int size)
 	unsigned long int input;
 	char *res;
 	int count = 0;
+	int i;
+	int len;
 	unsigned long int converted;
 
 	input = va_arg(list, unsigned long int);
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 8, 0);
-	/*res = convert((unsigned int)input, 8, 0);*/
+	len = _len(res);
+	if (width > len + 1)
+	{
+		for (i = 0; i < (width - len - 1); i++)
+			count += _putchar(' ');
+	}
 	if (flags->hash == 1 && input != 0)
-		count = _putchar('0');
+		count += _putchar('0');
+	else if (width > 0)
+		count += _putchar(' ');
 	count += putstr(res);
 	return (count);
 }
@@ -95,14 +111,22 @@ int print_hex_lower(va_list list, fl_t *flags, int width, int size)
 	unsigned long int input;
 	char *res;
 	int count = 0;
+	int len, i;
 	unsigned long int converted;
 
 	input = va_arg(list, unsigned long int);
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 16, 0);
-	/*res = convert((unsigned int)input, 16, 0);*/
+	len = _len(res);
+	if (width > len + 2)
+	{
+		for (i = 0; i < (width - len - 2); i++)
+			count += _putchar(' ');
+	}
 	if (flags->hash == 1 && input != 0)
-		count = putstr("0x");
+		count += putstr("0x");
+	else if (width > 0)
+		count += putstr("  ");
 	count += putstr(res);
 	return (count);
 }
@@ -121,14 +145,22 @@ int print_hex_upper(va_list list, fl_t *flags, int width, int size)
 	unsigned long int input;
 	char *res;
 	int count = 0;
+	int len, i;
 	unsigned long int converted;
 
 	input = va_arg(list, unsigned long int);
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 16, 1);
-	/*res = convert((unsigned int)input, 16, 1);*/
+	len = _len(res);
+	if (width > len + 2)
+	{
+		for (i = 0; i < (width - len - 2); i++)
+			count = _putchar(' ');
+	}
 	if (flags->hash == 1 && input != 0)
-		count = putstr("0X");
+		count += putstr("0X");
+	else if (width > 0)
+		count += putstr("  ");
 	count += putstr(res);
 	return (count);
 }

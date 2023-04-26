@@ -18,6 +18,7 @@ int ex_print_all(va_list list, fl_t *flags, int width, int size)
 	/* we will not use flags */
 	(void)flags;
 	(void)size;
+	(void)width;
 
 	res = va_arg(list, char *);
 	if (res == NULL)
@@ -69,7 +70,7 @@ int print_all(char *str)
 int print_address(va_list list, fl_t *flags, int width, int size)
 {
 	unsigned long int ptr;
-	int count = 0;
+	int count = 0, len, i;
 	char *res;
 
 	/* we will not use flags */
@@ -80,6 +81,12 @@ int print_address(va_list list, fl_t *flags, int width, int size)
 	if (!ptr)
 		return (putstr("(nil)"));
 	res = convert(ptr, 16, 0);
+	len = _len(res) + 2;
+	if (width > len)
+	{
+		for (i = 0; i < (width - len); i++)
+			count += _putchar(' ');
+	}
 	count += putstr("0x");
 	count += putstr(res);
 	return (count);
