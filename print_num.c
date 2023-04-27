@@ -47,7 +47,7 @@ void putnbr(unsigned long int nbr)
 int print_n(va_list list, fl_t *flags, int width, int size)
 {
 	long int n;
-	int plus = 0, mines = 0, space = 0, count, k, i = 0;
+	int plus = 0, mines = 0, space = 0, count = 0, k, i = 0;
 	unsigned long int num;
 	char padding = ' ', sign;
 
@@ -80,7 +80,8 @@ int print_n(va_list list, fl_t *flags, int width, int size)
 	}
 	if ((mines || space || plus) && !flags->zero)
 		_putchar(sign);
-	putnbr(num), i += count;
+	putnbr(num);
+	i += count;
 	return (i);
 }
 
