@@ -67,4 +67,5 @@ long int convert_number(long int n, int size);
 int get_len_modifier(const char *format, int *p);
 int get_field_width(const char *format, int *p, va_list list);
 int _is_digit(char c);
+char get_sign(int mines, int space, int plus);
 #endif
