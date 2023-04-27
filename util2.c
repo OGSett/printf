@@ -40,7 +40,6 @@ int print_uint(va_list list, fl_t *flags, int width, int size)
 	unsigned long int input;
 	char *res;
 	int count = 0;
-	int i;
 	int len;
 	unsigned long int converted;
 	char padding = ' ';
@@ -53,12 +52,11 @@ int print_uint(va_list list, fl_t *flags, int width, int size)
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 10, 0);
 	len = _len(res);
-	if (width > len /*&& !flags->zero*/)
-	{
-		for (i = 0; i < (width - len); i++)
-			count += _putchar(padding);
-	}
+	if (!flags->minus)
+		count += write_padding(width, len, padding);
 	count += putstr(res);
+	if (flags->minus && padding != '0')
+		count += write_padding(width, len, padding);
 	return (count);
 }
 
@@ -77,7 +75,6 @@ int print_octal(va_list list, fl_t *flags, int width, int size)
 	unsigned long int input;
 	char *res;
 	int count = 0;
-	int i;
 	int len;
 	unsigned long int converted;
 	char padding = ' ';
@@ -91,14 +88,13 @@ int print_octal(va_list list, fl_t *flags, int width, int size)
 	len = _len(res);
 	if (flags->hash == 1 && input != 0)
 		len++;
-	if (width > len /*+ 1 && !flags->zero*/)
-	{
-		for (i = 0; i < (width - len /*- 1*/); i++)
-			count += _putchar(padding);
-	}
+	if (!flags->minus)
+		count += write_padding(width, len, padding);
 	if (flags->hash == 1 && input != 0)
 		count += _putchar('0');
 	count += putstr(res);
+	if (flags->minus && padding != '0')
+		count += write_padding(width, len, padding);
 	return (count);
 }
 
@@ -117,7 +113,7 @@ int print_hex_lower(va_list list, fl_t *flags, int width, int size)
 	unsigned long int input;
 	char *res;
 	int count = 0;
-	int len, i;
+	int len;
 	unsigned long int converted;
 	char padding = ' ';
 
@@ -130,14 +126,13 @@ int print_hex_lower(va_list list, fl_t *flags, int width, int size)
 	len = _len(res);
 	if (flags->hash == 1 && input != 0)
 		len += 2;
-	if (width > len /*+ 2 && !flags->zero*/)
-	{
-		for (i = 0; i < (width - len /*- 2*/); i++)
-			count += _putchar(padding);
-	}
+	if (!flags->minus)
+		count += write_padding(width, len, padding);
 	if (flags->hash == 1 && input != 0)
 		count += putstr("0x");
 	count += putstr(res);
+	if (flags->minus && padding != '0')
+		count += write_padding(width, len, padding);
 	return (count);
 }
 
@@ -155,7 +150,7 @@ int print_hex_upper(va_list list, fl_t *flags, int width, int size)
 	unsigned long int input;
 	char *res;
 	int count = 0;
-	int len, i;
+	int len;
 	unsigned long int converted;
 	char padding = ' ';
 
@@ -168,13 +163,12 @@ int print_hex_upper(va_list list, fl_t *flags, int width, int size)
 	len = _len(res);
 	if (flags->hash == 1 && input != 0)
 		len += 2;
-	if (width > len /*+ 2 && !flags->zero*/)
-	{
-		for (i = 0; i < (width - len /*- 2*/); i++)
-			count += _putchar(padding);
-	}
+	if (!flags->minus)
+		count += write_padding(width, len, padding);
 	if (flags->hash == 1 && input != 0)
 		count += putstr("0X");
 	count += putstr(res);
+	if (flags->minus && padding != '0')
+		count += write_padding(width, len, padding);
 	return (count);
 }

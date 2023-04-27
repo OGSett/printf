@@ -20,6 +20,7 @@ typedef struct flags
 	int space;
 	int hash;
 	int zero;
+	int minus;
 } fl_t;
 
 
@@ -68,4 +69,5 @@ int get_len_modifier(const char *format, int *p);
 int get_field_width(const char *format, int *p, va_list list);
 int _is_digit(char c);
 char get_sign(int mines, int space, int plus);
+int write_padding(int width, int len, char padding);
 #endif
