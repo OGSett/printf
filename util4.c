@@ -21,18 +21,19 @@ int _len(char *str)
  * @flags: pointer to flags.
  * @width: the width of the field.
  * @size: the size of type.
+ * @precision: The field precision.
  * Return: number of char printed
  */
-int print_rev(va_list list, fl_t *flags, int width, int size)
+int print_rev(va_list list, fl_t *flags, int width, int size, int precision)
 {
 	char *input;
 	int count = 0;
 	int len;
 
-	/* we will not use flags with custom specifier */
 	(void)flags;
 	(void)size;
 	(void)width;
+	(void)precision;
 
 	input = va_arg(list, char *);
 	if (input == NULL)
@@ -52,21 +53,22 @@ int print_rev(va_list list, fl_t *flags, int width, int size)
  * @list: list of args.
  * @flags: pointer to flags.
  * @width: the width of the field.
- * @size: the size of type
+ * @size: the size of type.
+ * @precision: The field precision.
  * Return: the number of char printed.
  */
 
-int print_13(va_list list, fl_t *flags, int width, int size)
+int print_13(va_list list, fl_t *flags, int width, int size, int precision)
 {
 	int i;
 	int count = 0;
 	char temp;
 	char *input;
 
-	/* we will not use flags with custom specifier */
 	(void)flags;
 	(void)size;
 	(void)width;
+	(void)precision;
 
 	input = va_arg(list, char *);
 	if (input == NULL)

@@ -6,19 +6,20 @@
  * @list: list of args.
  * @flags: pointer to flags.
  * @width: the width of the field.
- * @size: size of type
+ * @size: size of type.
+ * @precision: the field precision.
  * Return: number of char printed.
  */
-int print_b(va_list list, fl_t *flags, int width, int size)
+int print_b(va_list list, fl_t *flags, int width, int size, int precision)
 {
 	char *res;
 	unsigned int input;
 	int count;
 
-	/* we will not use flags on custom specifier */
 	(void)flags;
 	(void)size;
 	(void)width;
+	(void)precision;
 
 	input = va_arg(list, unsigned int);
 	res = convert(input, 2, 0);
@@ -31,11 +32,12 @@ int print_b(va_list list, fl_t *flags, int width, int size)
  * @list: list of args.
  * @flags: pointer to flags.
  * @width: the width of the field.
- * @size: the size of type
+ * @size: the size of type.
+ * @precision: the field precision.
  * Return: number of char printed.
  */
 
-int print_uint(va_list list, fl_t *flags, int width, int size)
+int print_uint(va_list list, fl_t *flags, int width, int size, int precision)
 {
 	unsigned long int input;
 	char *res;
@@ -44,10 +46,9 @@ int print_uint(va_list list, fl_t *flags, int width, int size)
 	unsigned long int converted;
 	char padding = ' ';
 
+	(void)precision;
 	if (flags->zero)
 		padding = '0';
-
-
 	input = va_arg(list, unsigned long int);
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 10, 0);
@@ -67,10 +68,11 @@ int print_uint(va_list list, fl_t *flags, int width, int size)
  * @flags: pointer to flags.
  * @width: the width of the field.
  * @size: the size of type
+ * @precision: The field precision.
  * Return: number of char printed.
  */
 
-int print_octal(va_list list, fl_t *flags, int width, int size)
+int print_octal(va_list list, fl_t *flags, int width, int size, int precision)
 {
 	unsigned long int input;
 	char *res;
@@ -79,9 +81,9 @@ int print_octal(va_list list, fl_t *flags, int width, int size)
 	unsigned long int converted;
 	char padding = ' ';
 
+	(void)precision;
 	if (flags->zero)
 		padding = '0';
-
 	input = va_arg(list, unsigned long int);
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 8, 0);
@@ -105,10 +107,11 @@ int print_octal(va_list list, fl_t *flags, int width, int size)
  * @flags: pointer to flags.
  * @width: the width of the field.
  * @size: the size of type.
+ * @p: the field precision.
  * Return: number of char printed,
  */
 
-int print_hex_lower(va_list list, fl_t *flags, int width, int size)
+int print_hex_lower(va_list list, fl_t *flags, int width, int size, int p)
 {
 	unsigned long int input;
 	char *res;
@@ -117,9 +120,9 @@ int print_hex_lower(va_list list, fl_t *flags, int width, int size)
 	unsigned long int converted;
 	char padding = ' ';
 
+	(void)p;
 	if (flags->zero)
 		padding = '0';
-
 	input = va_arg(list, unsigned long int);
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 16, 0);
@@ -143,9 +146,10 @@ int print_hex_lower(va_list list, fl_t *flags, int width, int size)
  * @flags: pointer to flags.
  * @width: the width of the field.
  * @size: The size of type.
+ * @p: The field precision.
  * Return: number of chars printed.
  */
-int print_hex_upper(va_list list, fl_t *flags, int width, int size)
+int print_hex_upper(va_list list, fl_t *flags, int width, int size, int p)
 {
 	unsigned long int input;
 	char *res;
@@ -154,9 +158,9 @@ int print_hex_upper(va_list list, fl_t *flags, int width, int size)
 	unsigned long int converted;
 	char padding = ' ';
 
+	(void)p;
 	if (flags->zero)
 		padding = '0';
-
 	input = va_arg(list, unsigned long int);
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 16, 1);

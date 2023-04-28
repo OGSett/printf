@@ -34,7 +34,8 @@ The character % is followed by zero or more of the following flags:
 | + | A sign (+ or -) should always be placed before a number produced by a signed conversion.  By default, a sign is used only for negative numbers.  A  + overrides a space if both are used. |
 | ' ' | (a space) A blank should be left before a positive number (or empty string) produced by a signed conversion. |
 | # | The  value should be converted to an "alternate form":<br/>- For o conversions, the first character of the output string is made zero (by prefixing a 0 if it was not zero already).<br/>- For x and X conversions, a nonzero result has the string "0x" (or "0X" for X conversions) prepended to it. |
-
+| 0 | The  value  should be zero padded. For d, i, o, u, x, X conversions, the converted value  is  padded  on the left with zeros rather than blanks. If the 0 and - flags both appear, the 0 flag is ignored. |
+| - | The converted value is to be left adjusted on the field  boundary. (The  default  is  right  justification.) The converted value is padded on the right with blanks, rather  than  on  the  left  with blanks or zeros.  A - overrides a 0 if both are given.|
 
 ## Length modifier
 Here "integer conversion" stands for d, i, o, u, x, or X conversion:

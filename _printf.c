@@ -9,8 +9,8 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int (*p_func)(va_list, fl_t *, int, int);
-	int i = 0, r_val = 0, size, width;
+	int (*p_func)(va_list, fl_t *, int, int, int);
+	int i = 0, r_val = 0, size, width, precision;
 	fl_t flags;
 
 	if (!format || (format[0] == '%' && format[1] == ' ' && !format[2]))
@@ -26,10 +26,11 @@ int _printf(const char *format, ...)
 			while (get_flags(*(format + i), &flags) == 1)
 				i++;
 			width = get_field_width(format, &i, args);
+			precision = get_precision(format, &i, args);
 			size = get_len_modifier(format, &i);
 			p_func = get_print_func(*(format + i));
 			if (p_func != NULL)
-				r_val += p_func(args, &flags, width, size);
+				r_val += p_func(args, &flags, width, size, precision);
 			else
 				r_val += _printf("%%%c", *(format + i));
 		}

@@ -42,17 +42,18 @@ int	_putchar(char c)
  * @flags: pointer to flags.
  * @width: the width of the field.
  * @size: The size of type.
+ * @precision: the field precision.
  * Return: 1 if printed, -1 otherwise.
  */
 
-int print_c(va_list list, fl_t *flags, int width, int size)
+int print_c(va_list list, fl_t *flags, int width, int size, int precision)
 {
 	char c;
 	int i, count = 0;
 
-	/* we will not use flags & size */
 	(void)flags;
 	(void)size;
+	(void)precision;
 
 	c = va_arg(list, int);
 	if (width > 1)
@@ -89,20 +90,20 @@ int putstr(char *str)
  * @flags: pointer to flags.
  * @width: the width of the field.
  * @size: The size of type.
+ * @precision: The field precision.
  * Return: number of char printed, -1 otherwise.
  */
 
-int print_s(va_list list, fl_t *flags, int width, int size)
+int print_s(va_list list, fl_t *flags, int width, int size, int precision)
 {
 	char *s;
 	int len, i, count;
 
 	count = 0;
 
-	/* we will not use flags & size */
 	(void)flags;
 	(void)size;
-
+	(void)precision;
 	s = va_arg(list, char *);
 	if (s == NULL)
 		s = "(null)";
@@ -122,15 +123,16 @@ int print_s(va_list list, fl_t *flags, int width, int size)
  * @flags: pointer to flags.
  * @width: the width of the field.
  * @size: the size of type.
+ * @p: The field precision.
  * Return: 1 if printed, -1  otherwise.
  */
 
-int print_percent(va_list list, fl_t *flags, int width, int size)
+int print_percent(va_list list, fl_t *flags, int width, int size, int p)
 {
 	(void)list;
-	/* we will not use flags & size*/
 	(void)flags;
 	(void)size;
 	(void)width;
+	(void)p;
 	return (_putchar('%'));
 }

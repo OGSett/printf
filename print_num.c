@@ -41,16 +41,18 @@ void putnbr(unsigned long int nbr)
  * @flags: pointer to flags.
  * @width: the width of the field.
  * @size: the size of type.
+ * @precision: the field precision.
  * Return: number of digit printed
  */
 
-int print_n(va_list list, fl_t *flags, int width, int size)
+int print_n(va_list list, fl_t *flags, int width, int size, int precision)
 {
 	long int n;
 	int plus = 0, mines = 0, space = 0, count = 0, i = 0;
 	unsigned long int num;
 	char padding = ' ', sign;
 
+	(void)precision;
 	if (flags->zero)
 		padding = '0';
 

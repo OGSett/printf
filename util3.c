@@ -7,18 +7,19 @@
  * @flags: pointer to flags.
  * @width: the width of the field.
  * @size: the size of type.
+ * @precision: The field precision.
  * Return: number of char printed.
  */
 
-int ex_print_all(va_list list, fl_t *flags, int width, int size)
+int ex_print_all(va_list list, fl_t *flags, int width, int size, int precision)
 {
 	char *res;
 	int count;
 
-	/* we will not use flags */
 	(void)flags;
 	(void)size;
 	(void)width;
+	(void)precision;
 
 	res = va_arg(list, char *);
 	if (res == NULL)
@@ -65,17 +66,18 @@ int print_all(char *str)
  * @flags: pointer to flags
  * @width: the width of the field.
  * @size: the size of type.
+ * @p: The field precision.
  * Return: nbr of printed characters
  */
-int print_address(va_list list, fl_t *flags, int width, int size)
+int print_address(va_list list, fl_t *flags, int width, int size, int p)
 {
 	unsigned long int ptr;
 	int count = 0, len, i;
 	char *res;
 
-	/* we will not use flags */
 	(void)flags;
 	(void)size;
+	(void)p;
 
 	ptr = va_arg(list, unsigned long int);
 	if (!ptr)
