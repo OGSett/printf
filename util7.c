@@ -4,9 +4,10 @@
  * @format: a character string
  * @p: a pointer to the current index of format
  * @list: list of arguments
+ * @f: a pointer to flags.
  * Return: the precision
  */
-int get_precision(const char *format, int *p, va_list list)
+int get_precision(const char *format, int *p, va_list list, fl_t *f)
 {
 	int index = *p;
 	int precision = 0;
@@ -22,6 +23,7 @@ int get_precision(const char *format, int *p, va_list list)
 				{
 					index++;
 					precision = va_arg(list, int);
+					f->precision = 1;
 					break;
 				}
 				else if (_is_digit(format[index]))
@@ -30,11 +32,37 @@ int get_precision(const char *format, int *p, va_list list)
 					precision += format[index] - '0';
 				}
 				else
+				{
+					f->precision = 1;
 					break;
+				}
 				index++;
 			}
 		}
 	}
 	*p = index;
 	return (precision);
+}
+
+/**
+ * substr - extracts a part of a string
+ * @str: the giving string
+ * @n: the number of bytes
+ * Return: the substring
+ */
+char *substr(char *str, unsigned int n)
+{
+	char *sub;
+	unsigned int i = 0;
+
+	sub = malloc(n * sizeof(char));
+	if (!sub)
+		return (NULL);
+	while (i < n)
+	{
+		sub[i] = str[i];
+		i++;
+	}
+	sub[i] = '\0';
+	return (sub);
 }

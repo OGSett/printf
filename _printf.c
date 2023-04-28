@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 			while (get_flags(*(format + i), &flags) == 1)
 				i++;
 			width = get_field_width(format, &i, args);
-			precision = get_precision(format, &i, args);
+			precision = get_precision(format, &i, args, &flags);
 			size = get_len_modifier(format, &i);
 			p_func = get_print_func(*(format + i));
 			if (p_func != NULL)

@@ -83,6 +83,7 @@ void init_flags(fl_t *flags)
 	flags->plus = 0;
 	flags->zero = 0;
 	flags->minus = 0;
+	flags->precision = 0;
 }
 /**
  * write_padding - writes padding characters

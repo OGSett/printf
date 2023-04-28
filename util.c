@@ -101,13 +101,20 @@ int print_s(va_list list, fl_t *flags, int width, int size, int precision)
 
 	count = 0;
 
-	(void)flags;
+	/*(void)flags;*/
 	(void)size;
-	(void)precision;
+	/*(void)precision;*/
+	if (flags->precision && precision == 0)
+		return (0);
 	s = va_arg(list, char *);
 	if (s == NULL)
 		s = "(null)";
 	len = _len(s);
+	if (flags->precision && len > precision)
+	{
+		s = substr(s, precision);
+		len = _len(s);
+	}
 	if (width > len)
 	{
 		for (i = 0; i < (width - len); i++)

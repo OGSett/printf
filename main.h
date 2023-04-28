@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 #define SIZE_BUFFER 1024
 
@@ -14,6 +15,7 @@
  * @hash: The # flag
  * @zero: 0 flag
  * @minus: - flag
+ * @precision: Indicate if the precision exist
  */
 typedef struct flags
 {
@@ -22,6 +24,7 @@ typedef struct flags
 	int hash;
 	int zero;
 	int minus;
+	int precision;
 } fl_t;
 
 
@@ -71,6 +74,7 @@ int get_field_width(const char *format, int *p, va_list list);
 int _is_digit(char c);
 char get_sign(int mines, int space, int plus);
 int write_padding(int width, int len, char padding);
-int get_precision(const char *format, int *p, va_list list);
+int get_precision(const char *format, int *p, va_list list, fl_t *flags);
+char *substr(char *str, unsigned int n);
 
 #endif
