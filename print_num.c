@@ -48,15 +48,16 @@ void putnbr(unsigned long int nbr)
 int print_n(va_list list, fl_t *flags, int width, int size, int precision)
 {
 	long int n;
-	int plus = 0, mines = 0, space = 0, count = 0, i = 0;
+	int plus = 0, mines = 0, space = 0, count = 0, i = 0, k = 0;
 	unsigned long int num;
 	char padding = ' ', sign;
 
-	(void)precision;
 	if (flags->zero)
 		padding = '0';
 
 	n = va_arg(list, long int);
+	if (flags->precision && !precision && n == 0)
+		return (0);
 	n = convert_number(n, size);
 	if (n < 0)
 	{
@@ -72,6 +73,7 @@ int print_n(va_list list, fl_t *flags, int width, int size, int precision)
 		num = n;
 	}
 	i += count_digit(num);
+	k = add_pad_precision(flags, count_digit(num), precision), i += k;
 	sign = get_sign(mines, space, plus);
 	if ((mines || space || plus) && flags->zero)
 		_putchar(sign);
@@ -79,6 +81,7 @@ int print_n(va_list list, fl_t *flags, int width, int size, int precision)
 		count += write_padding(width, i, padding);
 	if ((mines || space || plus) && !flags->zero)
 		_putchar(sign);
+	print_num_precision(k);
 	putnbr(num);
 	if (flags->minus && padding != '0')
 		count += write_padding(width, i, padding);
@@ -104,4 +107,17 @@ char get_sign(int mines, int space, int plus)
 	if (plus)
 		sign = '+';
 	return (sign);
+}
+/**
+ * add_pad_precision - returns number of 0 to add at the left
+ * @flags: pointer to flags
+ * @len: the number of digits of the number
+ * @precision: the number precision
+ * Return: number of 0 to add.
+ */
+int add_pad_precision(fl_t *flags, int len, int precision)
+{
+	if (flags->precision && len < precision && precision > 0)
+		return (precision - len);
+	return (0);
 }

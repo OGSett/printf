@@ -95,3 +95,12 @@ char *add_precision(char *num, int len, int precision)
 	new[i] = '\0';
 	return (new);
 }
+/**
+ * print_num_precision - add the padding '0' to get the precision
+ * @n: the number of 0 to print
+ */
+void print_num_precision(int n)
+{
+	while (n--)
+		_putchar('0');
+}

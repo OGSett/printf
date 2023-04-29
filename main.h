@@ -77,5 +77,7 @@ int write_padding(int width, int len, char padding);
 int get_precision(const char *format, int *p, va_list list, fl_t *flags);
 char *substr(char *str, unsigned int n);
 char *add_precision(char *num, int len, int precision);
+int add_pad_precision(fl_t *flags, int len, int precision);
+void print_num_precision(int n);
 
 #endif
