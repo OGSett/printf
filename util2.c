@@ -87,13 +87,19 @@ int print_octal(va_list list, fl_t *flags, int width, int size, int precision)
 	unsigned long int converted;
 	char padding = ' ';
 
-	(void)precision;
 	if (flags->zero)
 		padding = '0';
 	input = va_arg(list, unsigned long int);
+	if (flags->precision && !precision && input == 0)
+		return (0);
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 8, 0);
 	len = _len(res);
+	if (flags->precision && len < precision && precision > 0)
+	{
+		res = add_precision(res, len, precision);
+		len = _len(res);
+	}
 	if (flags->hash == 1 && input != 0)
 		len++;
 	if (!flags->minus)
