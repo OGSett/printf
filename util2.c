@@ -136,9 +136,16 @@ int print_hex_lower(va_list list, fl_t *flags, int width, int size, int p)
 	if (flags->zero)
 		padding = '0';
 	input = va_arg(list, unsigned long int);
+	if (flags->precision && !p && input == 0)
+		return (0);
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 16, 0);
 	len = _len(res);
+	if (flags->precision && len < p && p > 0)
+	{
+		res = add_precision(res, len, p);
+		len = _len(res);
+	}
 	if (flags->hash == 1 && input != 0)
 		len += 2;
 	if (!flags->minus)
@@ -174,9 +181,16 @@ int print_hex_upper(va_list list, fl_t *flags, int width, int size, int p)
 	if (flags->zero)
 		padding = '0';
 	input = va_arg(list, unsigned long int);
+	if (flags->precision && !p && input == 0)
+		return (0);
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 16, 1);
 	len = _len(res);
+	if (flags->precision && len < p && p > 0)
+	{
+		res = add_precision(res, len, p);
+		len = _len(res);
+	}
 	if (flags->hash == 1 && input != 0)
 		len += 2;
 	if (!flags->minus)
