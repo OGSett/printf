@@ -97,13 +97,12 @@ int putstr(char *str)
 int print_s(va_list list, fl_t *flags, int width, int size, int precision)
 {
 	char *s;
-	int len, i, count;
+	int len, count;
+	char padding = ' ';
 
 	count = 0;
 
-	/*(void)flags;*/
 	(void)size;
-	/*(void)precision;*/
 	if (flags->precision && precision == 0)
 		return (0);
 	s = va_arg(list, char *);
@@ -115,12 +114,11 @@ int print_s(va_list list, fl_t *flags, int width, int size, int precision)
 		s = substr(s, precision);
 		len = _len(s);
 	}
-	if (width > len)
-	{
-		for (i = 0; i < (width - len); i++)
-			count += _putchar(' ');
-	}
+	if (!flags->minus)
+		count += write_padding(width, len, padding);
 	count += putstr(s);
+	if (flags->minus)
+		count += write_padding(width, len, padding);
 	return (count);
 }
 
