@@ -49,19 +49,19 @@ int	_putchar(char c)
 int print_c(va_list list, fl_t *flags, int width, int size, int precision)
 {
 	char c;
-	int i, count = 0;
+	int count = 0;
+	char padding = ' ';
 
 	(void)flags;
 	(void)size;
 	(void)precision;
 
 	c = va_arg(list, int);
-	if (width > 1)
-	{
-		for (i = 0; i < width - 1; i++)
-			count += _putchar(' ');
-	}
+	if (!flags->minus)
+		count += write_padding(width, 1, padding);
 	count += _putchar(c);
+	if (flags->minus)
+		count += write_padding(width, 1, padding);
 	return (count);
 }
 /**
