@@ -66,3 +66,32 @@ char *substr(char *str, unsigned int n)
 	sub[i] = '\0';
 	return (sub);
 }
+
+/**
+ * add_precision - add the padding '0' to get the precision
+ * @num: the number digits stored in a string
+ * @len: number of digits of the number
+ * @precision: the field precision
+ * Return: the new string with the precision or NULL if fails
+ */
+char *add_precision(char *num, int len, int precision)
+{
+	char *new;
+	int i = 0, j = 0;
+
+	new = malloc(precision * sizeof(char));
+	if (!new)
+		return (NULL);
+	while (i < (precision - len))
+	{
+		new[i] = '0';
+		i++;
+	}
+	while (num[j])
+	{
+		new[i] = num[j];
+		i++, j++;
+	}
+	new[i] = '\0';
+	return (new);
+}

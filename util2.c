@@ -46,13 +46,19 @@ int print_uint(va_list list, fl_t *flags, int width, int size, int precision)
 	unsigned long int converted;
 	char padding = ' ';
 
-	(void)precision;
 	if (flags->zero)
 		padding = '0';
 	input = va_arg(list, unsigned long int);
+	if (flags->precision && !precision && input == 0)
+		return (0);
 	converted = convert_unsigned_number(input, size);
 	res = convert(converted, 10, 0);
 	len = _len(res);
+	if (flags->precision && len < precision && precision > 0)
+	{
+		res = add_precision(res, len, precision);
+		len = _len(res);
+	}
 	if (!flags->minus)
 		count += write_padding(width, len, padding);
 	count += putstr(res);
